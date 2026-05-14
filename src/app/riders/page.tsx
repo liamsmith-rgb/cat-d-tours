@@ -6,6 +6,7 @@ const riders = [
     nick: "Squadron Leader",
     from: "Blackburn, England",
     img: "/images/riders/neil.jpg",
+    imgPos: "object-top",
     bikes: ["KTM 990", "KTM 890", "KTM 790", "Honda CRF300L", "Yamaha Ténéré", "Husqvarna", "Rieju"],
     bio: "The man who navigates every Cat D tour. Neil has more miles under his wheels than anyone in the community — solo rides across Europe, TET across the Yorkshire Dales and Scotland, and he's been to the majority of European countries on two wheels. His garage over the years reads like a motorcycle dealership — KTMs, Hondas, Husqvarnas, Yamahas, the lot. The 790 carried him through the most legendary Cat D moments. The 300L? The lads reckon it has about two horsepower.",
     bio2: "A fast rider when he wants to be, but when leading the group he keeps a steady, friendly pace that brings everyone along. He hardly ever comes off — but when he does, every phone comes out before anyone thinks about helping. Well known at local bike meets and respected across the biking community. Rides smart, cares about wildlife, protects the trails. Favourite places: the Italian Alps and the Picos in Spain.",
@@ -18,6 +19,7 @@ const riders = [
     nick: "Long Shanks",
     from: "Ashton-under-Lyne, England",
     img: "/images/riders/liam.jpg",
+    imgPos: "object-[30%_35%]",
     bikes: ["KTM 890", "KTM 350 EXC", "Ténéré 700", "KTM 1290S"],
     bio: "Brother to Lewis \"Short Shanks\" — one got the legs, one didn't. Liam is the rider liaison, problem solver, and chief eccentric of Cat D Tours. He sorts the hotels, the bookings, and speaks with riders to understand what kind of group they are. On the road he's a different animal — cracks the jokes, makes the lads laugh, sometimes goes a little too far, sending people the wrong direction into ditches and all sorts.",
     bio2: "Let's say maintenance isn't his strongest suit. His bike is always breaking down — usually because he's bought cheap Chinese inner tubes. But when something actually needs solving — a real problem, a logistical nightmare — that's Liam's department. He's the problem solver. Done Italy, Spain, Andorra, Monaco, and loves the English TET. Loves long days and good weather. Hates the rain, but rides through plenty of it.",
@@ -30,6 +32,7 @@ const riders = [
     nick: "Short Shanks",
     from: "Ashton-under-Lyne, England",
     img: "/images/riders/lewis.jpg",
+    imgPos: "object-top",
     bikes: ["KTM 890", "KTM 790", "KTM 350 EXC"],
     bio: "One of the younger riders in Cat D at 31, but don't let that fool you — Lewis is a top rider. Brother to Liam \"Long Shanks\", it clearly runs in the family. He lives for the off-road tours, the get-up-and-go lifestyle of a different place each day and new digs each night. He's completed the Spain tour, the Andorra tour, the Italy tour, and several trips across the UK. He's also ridden to Ypres in Belgium to visit the Flanders Fields memorials — Cat D Tours isn't just about the riding.",
     bio2: "Lewis loves the commotion. He's the first one to check you're alright when you come off, and the first one laughing once he knows you're fine. Loves a giggle, loves the banter, and brings energy to every tour. Short Shanks they call him — little legs on a big bike, but he makes it work.",
@@ -42,12 +45,26 @@ const riders = [
     nick: "3 from 3",
     from: "England",
     img: "/images/riders/ricky.jpg",
+    imgPos: "object-top",
     bikes: ["KTM 390", "Honda CRF300L", "KTM 250"],
     bio: "The youngest rider in Cat D at just 21, Ricky burst onto the scene with a KTM 250 and hasn't looked back. Moved to the Honda CRF300L — nice and low, enough power but just not quite enough — so he went and bought a KTM 390. A bit taller, but plenty of power, and he makes it work. Three bikes, three Cat D write-offs. A perfect record.",
     bio2: "Ricky is living for it. He's done the Italy trip, UK TET trails, and just got back from the Isle of Man — where he spent plenty of time on the floor, let's just say that. But every single time, he gets up and keeps going. He's a regular at the ABR Festival at Ragley Hall, runs his own TikTok page with riding footage, and loves long riding days with his GoPro rolling. Although we won't mention the SD card corruption issues.",
     storyTitle: "The Americans at the Channel",
     story: "Waiting to cross the Channel, Ricky met two American lads who couldn't believe how the bikes were transported. \"You put your bikes on the train... across the sea... on the ground?\" The accent, the disbelief, the whole conversation — Ricky found it absolutely hilarious and kept talking to them. One of those moments you had to be there for, but the lads still bring it up.",
     footer: "His real name is also Adam, but we won't go into that. Top lad. Just 3 Cat D tours to his name — doing well out of 3 bikes. The future of Cat D Tours.",
+  },
+  {
+    name: "Kai",
+    nick: "Max",
+    from: "Cheshire, England",
+    img: "/images/riders/kai.png",
+    imgPos: "object-top",
+    bikes: ["Yamaha Ténéré World Raid", "Yamaha MX", "Yamaha Enduro"],
+    bio: "A championship-winning motocross rider turned adventure biker, Kai brings serious pedigree to Cat D Tours. He's competed at Sweet Lamb, completed the Hellas Rally across Greece, and regularly takes on technical trails in Wales and the Lake District on big bikes. A triathlon athlete as well — though the lads reckon he's put on a bit of timber lately. Former bouncer, built like a unit, hence the nickname \"Max\" — straight out of Phoenix Nights.",
+    bio2: "A relatively new addition to the crew but already central to the group. Family man, good laugh, and runs his own YouTube channel — Cheshire Adventure — documenting his rides. He handles sweeping fast tracks like nobody else and isn't afraid of the rough stuff either. The kind of rider who makes everything look easy and then cracks a joke about it afterwards.",
+    storyTitle: "The helmet bag tent",
+    story: "At the ABR Festival, Kai rocked up with what can only be described as the world's smallest tent. The lads took one look and decided he was sleeping in his helmet bag. It became a running joke for the entire weekend. Then there was the \"marathon\" in Greece — supposed to be a long gruelling race day. Kai finished in a couple of hours and was back home in time for breakfast. The group still hasn't let that one go.",
+    footer: "Motocross champion, Hellas Rally finisher, helmet bag camper. Max brings speed, strength, and plenty of laughs to every Cat D tour.",
   },
 ];
 
@@ -66,7 +83,7 @@ export default function RidersPage() {
             {/* Image + header on mobile: stacked. On desktop: side by side */}
             <div className="grid grid-cols-1 md:grid-cols-[260px_1fr]">
               <div className="relative h-72 md:h-auto md:min-h-[400px]">
-                <Image src={r.img} alt={r.name} fill className="object-cover object-top" sizes="(max-width: 768px) 100vw, 260px" />
+                <Image src={r.img} alt={r.name} fill className={`object-cover ${r.imgPos}`} sizes="(max-width: 768px) 100vw, 260px" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent md:hidden" />
                 {/* Mobile: name overlay */}
                 <div className="absolute bottom-0 left-0 right-0 p-5 md:hidden">
