@@ -53,6 +53,7 @@ const riders = [
     storyTitle: "The Americans at the Channel",
     story: "Waiting to cross the Channel, Ricky met two American lads who couldn't believe how the bikes were transported. \"You put your bikes on the train... across the sea... on the ground?\" The accent, the disbelief, the whole conversation — Ricky found it absolutely hilarious and kept talking to them. One of those moments you had to be there for, but the lads still bring it up.",
     footer: "His real name is also Adam, but we won't go into that. Top lad. Just 3 Cat D tours to his name — doing well out of 3 bikes. The future of Cat D Tours.",
+    youtube: "https://youtube.com/@rickyontwowheels?si=w4NoBzzTA_K015Rn",
   },
   {
     name: "Kai",
