@@ -120,6 +120,24 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Team Photo ── */}
+      <section className="px-5 py-12 md:px-10 md:py-16 border-b border-[#161616] max-w-5xl mx-auto">
+        <p className="text-[10px] tracking-[0.25em] text-catd-subtle uppercase mb-3">The crew</p>
+        <h2 className="text-2xl md:text-3xl font-bold mb-5">Ten riders and counting</h2>
+        <Image
+          src="/images/gallery/team-abr.jpg"
+          alt="The Cat D Tours crew at the ABR Festival"
+          width={1400}
+          height={800}
+          className="rounded-lg w-full"
+          sizes="(max-width: 768px) 100vw, 960px"
+        />
+        <p className="text-[10px] text-[#444] mt-3">The full crew at the ABR Festival, Ragley Hall</p>
+        <Link href="/riders" className="inline-block text-sm text-catd-orange font-semibold hover:underline mt-4">
+          Meet the riders →
+        </Link>
+      </section>
+
       {/* ── The Cat D Way ── */}
       <section className="px-5 py-12 md:px-10 md:py-16 max-w-6xl mx-auto">
         <p className="text-[10px] tracking-[0.25em] text-catd-subtle uppercase mb-3">What makes us different</p>
