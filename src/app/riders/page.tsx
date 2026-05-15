@@ -13,6 +13,7 @@ const riders = [
     storyTitle: "The weiner incident",
     story: "The group arrived late at the hotel after a long day. Neil said he was heading to the restaurant. Everyone showered and came out to find him in the car park with his one-burner stove and a pack of sausages — making hot dogs for everyone. Eric from Wigan walked out: \"Eh up cock, where's the restaurant?\" There was Neil, cutting the ends off the sausages as he does, serving weiners with red sauce. The crew had to leg it back before they missed check-in. Classic Squadron Leader.",
     footer: "Closed passes, punctures, running out of fuel — Cat D has had it all. But Neil always gets the group to the destination. The Squadron Leader never fails.",
+    youtube: "https://youtube.com/@neilcollinson6540?si=j_JlOO3zq5y2sjmZ",
   },
   {
     name: "Liam",
