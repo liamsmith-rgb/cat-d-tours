@@ -39,7 +39,7 @@ const images = [
   { src: "/images/gallery/spain-tour.jpg", caption: "Spanish hilltop — the crew giving thumbs up after a long day" },
   { src: "/images/gallery/bike-recovery-selfie.jpg", caption: "Bike recovery — selfie while pulling the KTM out of the bushes" },
   { src: "/images/gallery/group-tour.jpg", caption: "Deep in the woods — bike stuck under a fallen tree, classic Cat D" },
-  { src: "/images/gallery/wa-ride-12.jpg", caption: "River crossing — BMW ploughing through the water, full send" },
+  { src: "/images/gallery/wa-ride-12.jpg", caption: "River crossing — Yamaha ploughing through the water, full send" },
   { src: "/images/gallery/wa-ride-21.jpg", caption: "Overgrown trail — KTM pushing through dense green woodland" },
   { src: "/images/gallery/heic-ride-4.jpg", caption: "Muddy hillside recovery — bikes stuck in the ruts, digging out" },
   { src: "/images/gallery/heic-ride-1.jpg", caption: "Bikes parked at the hostel — loaded up and ready for tomorrow" },
