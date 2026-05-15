@@ -90,7 +90,7 @@ const riders = [
     nick: "The Warrior",
     from: "Cheshire, England",
     img: "/images/riders/mark.jpg",
-    imgPos: "object-[50%_30%]",
+    imgPos: "object-center",
     bikes: ["Honda CRF300L", "Honda Africa Twin", "BMW 1200 GS", "KTM 890", "KTM 350"],
     bio: "A mechanic by trade who specialises in fixing all types of plant machinery, Mark has been riding for a very long time and has completed numerous tours with Cat D. The lads consider him \"a little bit mad\" — and that's mostly down to the number of bikes he owns. The CRF300L, the Africa Twin, the BMW 1200 GS, the 890, the 350 — the man has a fleet. Any conversation with Mark starts and ends with bikes. There is no other topic.",
     bio2: "They call him The Warrior for good reason. Mark has sustained all sorts over the years — back problems, hip issues — but he has never stopped riding. He always pulls through and gets back on the bike. That said, let's just say he's not short of a moment or two. Forgetting his licence in Malaga was just the tip of the iceberg — if something can go wrong on a tour, it'll happen to Mark first. The lads love him for it. He's at every group event, does significant road book work for the tours, and brings an infectious enthusiasm that lifts the whole crew. He runs his own channel with great content — well worth a follow. A top quality member of Cat D Tours.",
