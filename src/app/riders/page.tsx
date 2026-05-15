@@ -85,6 +85,20 @@ const riders = [
     story: "The crew stopped at a Hotel F1 in the middle of France for a quick overnight. No toilets in the rooms. A cube. People coming and going day and night. Dave took one look and said \"I'm not staying in this s***hole — I'm staying in the van.\" And he did. Then there's the intercom — the lads are always having a laugh about Dave's hearing. One time they rang him on the Cardo: \"Dave, can you hear me? Can you hear me?\" Dave's reply: \"NO!\" Well if you're saying no, you can clearly hear us.",
     footer: "Mechanic, rally driver, distance rider. Dave brings knowledge, experience, and the best one-word answers in the crew.",
   },
+  {
+    name: "Mark",
+    nick: "The Warrior",
+    from: "Cheshire, England",
+    img: "/images/riders/mark.jpg",
+    imgPos: "object-[50%_30%]",
+    bikes: ["Honda CRF300L", "Honda Africa Twin", "BMW 1200 GS", "KTM 890", "KTM 350"],
+    bio: "A mechanic by trade who specialises in fixing all types of plant machinery, Mark has been riding for a very long time and has completed numerous tours with Cat D. The lads consider him \"a little bit mad\" — and that's mostly down to the number of bikes he owns. The CRF300L, the Africa Twin, the BMW 1200 GS, the 890, the 350 — the man has a fleet. Any conversation with Mark starts and ends with bikes. There is no other topic.",
+    bio2: "They call him The Warrior for good reason. Mark has sustained all sorts over the years — back problems, hip issues — but he has never stopped riding. He always pulls through and gets back on the bike. He's at every group event, does significant road book work for the tours, and brings an infectious enthusiasm that lifts the whole crew. He runs his own channel with great content — well worth a follow. A top quality member of Cat D Tours.",
+    storyTitle: "The Malaga rescue bike",
+    story: "On a Cat D tour to Malaga, Mark arrived and realised he'd forgotten his driving licence. Couldn't hire his intended bike. Liam had to step in and sort it — but there was a price. As payment for the rescue, Mark had to forfeit the fancy BMW hire bike he'd eventually secured and instead ride what can only be described as a Top Gear rescue bike — an old, knackered Triumph with the worst trials tyres imaginable. Mark rode it anyway. The Warrior doesn't complain.",
+    footer: "Mechanic, warrior, bike hoarder. Mark brings resilience, enthusiasm, and more motorcycles than anyone can count to every Cat D tour.",
+    youtube: "https://www.youtube.com/@ishymoto3179",
+  },
 ];
 
 export default function RidersPage() {
