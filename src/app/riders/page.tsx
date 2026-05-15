@@ -66,6 +66,7 @@ const riders = [
     story: "At the ABR Festival, Kai rocked up with what can only be described as the world's smallest tent. The lads took one look and decided he was sleeping in his helmet bag. It became a running joke for the entire weekend. Then there was the \"marathon\" in Greece — supposed to be a long gruelling race day. Kai finished in a couple of hours and was back home in time for breakfast. The group still hasn't let that one go.",
     footer: "Motocross champion, Hellas Rally finisher, helmet bag camper. Max brings speed, strength, and plenty of laughs to every Cat D tour.",
     youtube: "https://youtube.com/channel/UCYBrPzQsrSAaBuoYM7ecvqA",
+    facebook: "https://www.facebook.com/groups/568029250655917/",
   },
 ];
 
@@ -126,11 +127,21 @@ export default function RidersPage() {
                   <p className="text-xs text-catd-subtle leading-relaxed">{r.footer}</p>
                 </div>
 
-                {r.youtube && (
-                  <a href={r.youtube} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-4 text-xs text-[#888] hover:text-catd-orange transition-colors">
-                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                    Cheshire Adventure on YouTube
-                  </a>
+                {(r.youtube || r.facebook) && (
+                  <div className="flex gap-4 flex-wrap mt-4">
+                    {r.youtube && (
+                      <a href={r.youtube} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs text-[#888] hover:text-catd-orange transition-colors">
+                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        Cheshire Adventure
+                      </a>
+                    )}
+                    {r.facebook && (
+                      <a href={r.facebook} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs text-[#888] hover:text-catd-orange transition-colors">
+                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        Facebook Group
+                      </a>
+                    )}
+                  </div>
                 )}
               </div>
             </div>
