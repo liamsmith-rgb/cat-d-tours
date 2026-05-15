@@ -99,6 +99,19 @@ const riders = [
     footer: "Mechanic, warrior, bike hoarder. Mark brings resilience, enthusiasm, and more motorcycles than anyone can count to every Cat D tour.",
     youtube: "https://www.youtube.com/@ishymoto3179",
   },
+  {
+    name: "Bill",
+    nick: "The Human AirTag",
+    from: "England",
+    img: "/images/riders/bill.jpg",
+    imgPos: "object-top",
+    bikes: ["Yamaha Ténéré 700", "Honda CRF300L", "Sur-Ron 250"],
+    bio: "The oldest rider in the group and a complete veteran of the sport. Bill is a skilled mechanic by trade, has run his own business, and his racing history stretches beyond bikes into rally driving. He's ridden all over the world, often clocking up serious miles alongside Neil. A global rider with decades of experience under his belt — there isn't much Bill hasn't seen or ridden through.",
+    bio2: "When the rain starts, Bill comes alive. Potentially the best wet-weather rider in the group — pulling off insane manoeuvres and disappearing so fast nobody can catch him. Despite being the senior member, he's an absolute trooper on the trails, though the lads note he might take a little longer at the petrol stations. Off the bike, Bill is the crew's chef — always rustling something up at the digs for the whole team. An amazing guy and a top lad to be around.",
+    storyTitle: "Where's Bill?",
+    story: "A recurring theme on every single Cat D tour: \"Where's Bill?\" Nobody knows how he does it, but Bill gets lost on almost every trip. He'll be there one minute, gone the next. The group has genuinely discussed hiding an Apple AirTag on him just so they can track his whereabouts. It hasn't happened yet — but it's only a matter of time. Until then, the lads just keep asking the same question.",
+    footer: "Veteran rider, rain specialist, master chef, and the man most likely to go missing on any given tour. Bill is the respected elder of Cat D Tours.",
+  },
 ];
 
 export default function RidersPage() {
