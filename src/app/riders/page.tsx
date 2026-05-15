@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const riders = [
   {
-    name: "Neil Collinson",
+    name: "Neil",
     nick: "Squadron Leader",
     from: "Blackburn, England",
     img: "/images/riders/neil.jpg",
