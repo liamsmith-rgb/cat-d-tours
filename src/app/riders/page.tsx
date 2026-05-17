@@ -120,10 +120,10 @@ const riders = [
     imgPos: "object-top",
     bikes: ["BMW 1250 GS", "Honda CRF300L", "AJP PR7 Gold Edition"],
     bio: "A newer addition to the Cat D crew, but Matt fits like he's been there from day one. A career in the police force has made him organised, methodical, and unflappable — exactly the sort of bloke you want on a long tour. He's a really competent rider who takes on any trail put in front of him, and the recent purchase of the AJP PR7 Gold Edition means he'll be taking things to another level.",
-    bio2: "Matt's done plenty of tours already — Spain, the Isle of Man, the ABR Festival — and he's a great addition to the group. Good laugh, good company, always reliable. Just don't put him on a boat. Matt absolutely hates ferries. He gets travel sick on a canal barge, never mind a Channel crossing. The crew have to tread carefully on that front. On dry land though, he's an absolute trooper.",
+    bio2: "Matt's done plenty of tours already — Spain, the Isle of Man, the ABR Festival — and he's a great addition to the group. Good laugh, good company, always reliable. Just don't put him on a boat. Matt absolutely hates ferries — he gets travel sick on a canal barge, never mind a Channel crossing. And while the rest of the crew are wiping mud off their faces with a sleeve, Matt's in the shower for forty-five minutes with a full toiletry bag. Moisturiser, exfoliator, the works. The man's skin regime is more advanced than most riders' bike maintenance schedules.",
     storyTitle: "The key incident",
     story: "On a Cat D tour to the Isle of Man, Neil had transported Matt's bike over for him. One problem — Neil forgot the key. No spare. No backup plan. What followed was pure Cat D engineering: a hammer, a screwdriver, and a lot of optimism. They basically had to vandal the bike to get it started, then drilled out the petrol cap just so they could refuel it. The bike ran. Matt rode. The Isle of Man was conquered. Just don't ask about the ignition barrel.",
-    footer: "Organised, reliable, and always well-groomed. Matt brings order to the chaos of Cat D Tours — and a toiletry bag that puts the rest of the crew to shame.",
+    footer: "Organised, reliable, and the best-moisturised man in adventure biking. Matt brings order to the chaos of Cat D Tours — and a toiletry bag bigger than most riders' panniers.",
   },
 ];
 
