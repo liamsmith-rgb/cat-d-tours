@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const tours = [
   {
@@ -13,13 +14,14 @@ const tours = [
   },
   {
     name: "Italian Alps TET",
-    yr: "2024",
-    sub: "Sauze d'Oulx & the France/Italy border",
-    days: "10 days",
+    yr: "2025",
+    sub: "Sauze d'Oulx, French border & the Ligurian coast",
+    days: "8 days",
     type: "TET Expert",
-    img: "/images/gallery/mountain-tunnel.jpg",
-    d: "Channel Tunnel to the Italian Alps. Military mule tracks at 2,500m, border crossings on gravel, abandoned tunnels carved into mountainsides. The Italian/French Alps TET is elite-level adventure riding — where Cat D Tours bikes come back as actual Cat D write-offs.",
-    highlights: ["2,500m military tracks", "Alpine tunnels", "France–Italy border trails"],
+    img: "/images/tours/italy-2025/it-3.jpg",
+    d: "Channel Tunnel to the Italian Alps. Military mule tracks at 2,500m, border crossings on gravel, abandoned WWII tunnels carved into mountainsides, alpine lakes, ski-resort passes, and an eight-day descent that ends at Sanremo and Monaco on the Med. The Italian/French Alps TET is elite-level adventure riding — where Cat D Tours bikes come back as actual Cat D write-offs.",
+    highlights: ["2,500m military tracks", "Alpine tunnels", "France–Italy border trails", "Ligurian coast finish"],
+    href: "/tours/italy-2025",
   },
   {
     name: "Lakes & Alps Grand Tour",
@@ -59,11 +61,16 @@ export default function ToursPage() {
                 <h2 className="text-xl md:text-2xl font-bold mb-1">{t.name}</h2>
                 <p className="text-xs text-catd-subtle mb-4">{t.sub}</p>
                 <p className="text-sm text-[#777] leading-7 mb-5">{t.d}</p>
-                <div className="flex gap-2 flex-wrap">
+                <div className="flex gap-2 flex-wrap mb-5">
                   {t.highlights.map((h) => (
                     <span key={h} className="text-[9px] px-2.5 py-1 rounded-sm bg-[#111] border border-[#1a1a1a] text-[#666]">{h}</span>
                   ))}
                 </div>
+                {t.href && (
+                  <Link href={t.href} className="inline-block text-sm text-catd-orange font-semibold hover:underline">
+                    Read the full story →
+                  </Link>
+                )}
               </div>
             </div>
           </article>
