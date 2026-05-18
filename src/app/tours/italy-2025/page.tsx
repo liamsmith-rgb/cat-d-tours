@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 
 const riders = [
   { name: "Neil", bike: "KTM 890", href: "/riders#neil" },
@@ -11,6 +11,61 @@ const riders = [
   { name: "Ricky", bike: "Honda CRF300L", href: "/riders#ricky" },
   { name: "Bill", bike: "Honda CRF300L", href: "/riders#bill" },
   { name: "Dave", bike: "Honda CRF300L", href: "/riders#dave" },
+];
+
+// Route waypoints — approximate coordinates, in tour order
+const routePoints: Array<{ name: string; coords: [number, number]; type: "start" | "stop" | "peak" | "end" }> = [
+  { name: "Manchester (Start)", coords: [53.4808, -2.2426], type: "start" },
+  { name: "Dover — White Cliffs", coords: [51.1295, 1.3089], type: "stop" },
+  { name: "Sauze d'Oulx — Basecamp", coords: [45.0287, 6.8581], type: "stop" },
+  { name: "Colle del Sommeiller — 3,000m (highest off-road in Europe)", coords: [45.155, 6.927], type: "peak" },
+  { name: "Assietta Trails 1 & 2", coords: [45.039, 6.945], type: "peak" },
+  { name: "Fort Exilles — 'Man in the Iron Mask' castle", coords: [45.0966, 6.9303], type: "stop" },
+  { name: "Limone Piemonte", coords: [44.2049, 7.5774], type: "stop" },
+  { name: "Via del Sale — the Salt Road (drone hairpin)", coords: [44.115, 7.665], type: "peak" },
+  { name: "Triora — the Witch Village", coords: [43.9931, 7.7669], type: "stop" },
+  { name: "Sanremo — Ligurian Coast", coords: [43.8159, 7.7762], type: "stop" },
+  { name: "French Alps tarmac passes", coords: [44.45, 6.9], type: "peak" },
+  { name: "Cascina La Commenda — Peveragno (final night)", coords: [44.3286, 7.6286], type: "end" },
+];
+
+const hotels = [
+  {
+    name: "Hotel K2",
+    location: "Sauze d'Oulx, Italy",
+    address: "Via Villaggio Alpino 1, 10050",
+    nights: "Basecamp — first stay",
+    rating: "8.6",
+    stars: 3,
+    note: "Right in Sauze d'Oulx, perched on the side of the Susa Valley. The launch pad for the Sommeiller and Assietta days.",
+  },
+  {
+    name: "Du Parc Hotel",
+    location: "Sauze d'Oulx, Italy",
+    address: "Via Monfol 9, 10050",
+    nights: "Basecamp — second stay",
+    rating: "8.6",
+    stars: 3,
+    note: "Same town, different digs. Quieter end of Sauze, parking for the bikes, decent restaurant attached.",
+  },
+  {
+    name: "Riserva Bianca Limone Hotel & SPA",
+    location: "Limone Piemonte, Italy",
+    address: "Panice Soprana 95, 12015",
+    nights: "Middle of tour",
+    rating: "8.3",
+    stars: 4,
+    note: "The luxury stop. After two days at altitude on the trails, the spa was earned. Riding from here gave us the Via del Sale and the Salt Road hairpins.",
+  },
+  {
+    name: "Cascina La Commenda",
+    location: "Peveragno, Italy",
+    address: "Strada Vecchia di S. Margherita 5 (SP 42), 12016",
+    nights: "Final night",
+    rating: "9.5",
+    stars: 3,
+    note: "The vineyard wedding venue. Ivy-covered farmhouse, sundial on the wall, dogs barking from the trees after dark. Liam and Lewis put dinner on the lads — end of tour.",
+  },
 ];
 
 const chapters = [
@@ -30,30 +85,42 @@ const chapters = [
     id: "drive",
     label: "Day 2",
     title: "Through the night to Sauze d'Oulx",
-    sub: "Channel Tunnel to the Italian Alps",
+    sub: "Channel Tunnel to the Italian/French border",
     body: [
       "Onto the last train at midnight. France in the dark. Black coffee, tag-team driving, the kind of conversations that only happen at 3am with the cruise control set and 1,400 km of motorway still to go.",
-      "By the time the sun came up we were already climbing — the Alps rising up either side of the autoroute, the lads waking up one by one in the back of the vans realising they were finally here. Sauze d'Oulx. A ski town in summer mode. Quiet, perched on the side of a mountain, with the Susa Valley dropping away below it.",
-      "Vans parked. Bikes off. The next seven days, no four wheels. Just panniers, a route, and whatever the weather wanted to throw at us.",
+      "By the time the sun came up we were already climbing — the Alps rising up either side of the autoroute, the lads waking up one by one in the back of the vans realising they were finally here. Sauze d'Oulx. A ski town in summer mode. Quiet, perched on the side of a mountain, with the Susa Valley dropping away below it. Right on the Italian/French border. Our basecamp for the first half of the trip.",
+      "Vans parked at Hotel K2. Bikes off. The next seven days, no four wheels. Just panniers, a route, and whatever the weather wanted to throw at us.",
     ],
   },
   {
-    id: "basecamp",
-    label: "Days 3–5",
-    title: "Sauze d'Oulx basecamp",
-    sub: "Mountain passes, ski slopes, alpine lakes",
+    id: "sommeiller",
+    label: "Day 3",
+    title: "Colle del Sommeiller — 3,000m",
+    sub: "The highest off-road track in Europe",
     body: [
-      "Three days riding out of Sauze d'Oulx. The plan was simple — pick a pass, ride to the top, see what's on the other side. The Italian Alps don't disappoint. Old military mule tracks zig-zagging up to 2,500m. Reservoirs the colour of jade tucked behind ridges. Crumbling stone forts at the summits where soldiers used to watch the French border for movement that never came.",
-      "The bikes loved it. The 890s and the Africa Twin handling the rocky climbs, the three CRF 300s flicking through the technical stuff. The drone went up at every pass — there's footage now of all seven of us silhouetted against the Alps, looking like we knew what we were doing.",
-      "Every day finished with the same routine — back to the digs, beers on the balcony, plotting the next day on the map.",
+      "Day one on the bikes and Neil pointed us straight up the Sommeiller. The highest off-road track in Europe. 3,000 metres of altitude up a relentless gravel zig-zag carved into the side of an alpine massif. Switchback after switchback, the air getting thinner, the bikes starting to feel it before we did.",
+      "At the top — a glacier-fed lake, a stone refuge, and a view that goes on forever. You can see into France on one side and back down into Italy on the other. There's a smell up there that's pure altitude. Cold rock, dry wind, no trees. The drone went up and the footage doesn't do it justice.",
+      "Coming down was almost harder than going up — loose gravel, fully-loaded panniers, six riders trying not to be the one that took the fall the lads would remember forever. We made it. Just.",
     ],
     img: "/images/tours/italy-2025/it-1.jpg",
-    imgCaption: "Neil on the KTM 890 — somewhere between Sauze d'Oulx and the French border",
+    imgCaption: "Neil on the 890 — somewhere on the descent off the Sommeiller",
+  },
+  {
+    id: "assietta",
+    label: "Day 4",
+    title: "Assietta Trails & Fort Exilles",
+    sub: "Past the castle of the Man in the Iron Mask",
+    body: [
+      "The Assietta is a network of military mule tracks running along the ridgelines above Sauze d'Oulx, dropping in and out of stone forts at 2,500m where Italian soldiers used to watch the French border for movement that never came. We rode Assietta 1 and 2 back to back — a full day on the tops.",
+      "On the way down we passed Fort Exilles — the castle of the Man in the Iron Mask. The one from the book. It sits above the road like something out of a film, walls bolted into the rock, and you can't help but slow down and take it in. We pulled up in the lay-by under the walls and got the drone up for one of the best shots of the trip.",
+    ],
+    img: "/images/tours/italy-2025/it-3.jpg",
+    imgCaption: "The crew at the top — rugged Italian Alps behind",
     grid: ["/images/tours/italy-2025/it-5.jpg", "/images/tours/italy-2025/it-8.jpg", "/images/tours/italy-2025/it-15.jpg"],
     gridCaptions: [
-      "Alpine lake stop — KTMs and the Africa Twin parked up at the water's edge",
-      "High pass cafe — bikes nose-to-nose under the rugged peaks",
-      "The famous ibex at the top of the pass — covered in stickers from every rider who's made it up",
+      "Alpine lake stop along the Assietta",
+      "High-pass cafe — bikes nose-to-nose under the rugged peaks",
+      "The ibex statue at the top of the pass — covered in stickers from every rider who's made it up",
     ],
   },
   {
@@ -62,20 +129,30 @@ const chapters = [
     title: "The Everton fan in Sauze d'Oulx",
     sub: "One bar, one barman, an unending stream of music",
     body: [
-      "One of the quieter nights we found a small bar tucked away from the main street. Walked in — empty. Then the barman heard the accents. Turns out he was from Liverpool. Everton fan. Hadn't seen another Brit in months.",
+      "One of the quieter nights in Sauze we found a small bar tucked away from the main street. Walked in — empty. Then the barman heard the accents. Turns out he was from Liverpool. Everton fan. Hadn't seen another Brit in months.",
       "What followed was four hours of him chatting non-stop, picking songs from his phone, pouring drinks, and telling stories about how he'd ended up running a bar in an Italian ski town. The lads barely got a word in. It was brilliant. He turned a quiet evening into one of the highlights of the trip.",
     ],
     img: "/images/tours/italy-2025/it-9.jpg",
     imgCaption: "The Everton bar in Sauze d'Oulx — quiet night, loud host",
   },
   {
-    id: "tunnels",
-    label: "Day 6",
-    title: "The WWII tunnels",
-    sub: "Carved into the mountainsides on the French border",
+    id: "limone",
+    label: "Day 5",
+    title: "South to Limone Piemonte",
+    sub: "From the Susa Valley down to the Piemonte region",
     body: [
-      "There's a network of tunnels on the Italian side of the border, cut by soldiers during the wars and largely abandoned ever since. Some have collapsed. Some you can still ride through. They're narrow — barely room for a cyclist, never mind a fully-loaded 890 — pitch black, dripping, with the temperature dropping ten degrees the second you go in.",
-      "You ride through on full beam, panniers scraping the walls, water running down your visor, and you come out the other side onto a balcony of rock with the whole valley dropping away in front of you. There's nothing else like it in adventure riding. You can't unsee it.",
+      "Time to move basecamp. We packed the panniers and rode south out of Sauze, down through the Susa Valley, into the Piemonte region. Mountain roads the whole way — endless switchbacks, alpine meadows, the temperature climbing every hour as we dropped altitude.",
+      "Limone Piemonte sits below the Maritime Alps. A proper Italian mountain town. We pulled into the Riserva Bianca Limone Hotel & SPA — four-star, full spa, the lot. After two days on the Sommeiller and Assietta, the steam room was earned.",
+    ],
+  },
+  {
+    id: "salt-road",
+    label: "Day 6",
+    title: "Via del Sale — the Salt Road",
+    sub: "Drone footage on the high hairpin",
+    body: [
+      "The Via del Sale — the old Salt Road that smugglers used to move salt between the coast and the inland villages. It runs along the ridge of the Maritime Alps, all gravel, all altitude, with sheer drops on one side and rock walls on the other.",
+      "Halfway along there's a hairpin that wraps around the side of a mountain with nothing below it. We held the bikes there, got the drone up, and captured what's probably the best single shot of the entire trip — the whole crew strung out along the hairpin with the valley falling away into the distance. Goosebumps stuff.",
     ],
   },
   {
@@ -84,67 +161,194 @@ const chapters = [
     title: "Running out of fuel at altitude",
     sub: "Six bikes coasting downhill, one bloke laughing",
     body: [
-      "Somewhere up on the high passes the whole group ran out of fuel. The whole group. Apart from Lewis, who'd filled up earlier and spent the next hour telling everyone about it.",
+      "Somewhere on the descent off the Salt Road the whole group ran out of fuel. The whole group. Apart from Lewis, who'd filled up earlier and spent the next hour telling everyone about it.",
       "Engines off. Bikes in neutral. Six riders freewheeling down a mountain pass trying to hit a petrol station before the road went flat. Brake pads getting warm, panniers swaying, gravity doing the work. We made it. Just. Filled up, ordered coffee, and pretended we'd planned it that way.",
     ],
   },
   {
     id: "pasta",
-    label: "Day 7",
+    label: "Lunch",
     title: "The Morecambe cafe",
     sub: "Best pasta of the trip, halfway up nowhere",
     body: [
-      "After dropping off one of the highest and most technical passes in Europe, we rolled into a tiny cafe perched on the descent. Half-expecting a service-station ham roll. What we got was a woman from Morecambe who'd moved out years ago and was now serving the best plate of pasta any of us had eaten in months.",
+      "Dropping off one of the highest and most technical passes of the week, we rolled into a tiny cafe perched on the descent. Half-expecting a service-station ham roll. What we got was a woman from Morecambe who'd moved out years ago and was now serving the best plate of pasta any of us had eaten in months.",
       "Sat outside, helmets on the table, bikes ticking as they cooled, surrounded by mountains, listening to a Lancastrian accent describe the menu. Cat D moments.",
     ],
   },
   {
-    id: "coast",
-    label: "Day 8",
-    title: "Down to Sanremo & Monaco",
-    sub: "From alpine passes to the Mediterranean",
+    id: "triora-sanremo",
+    label: "Day 7",
+    title: "Triora to Sanremo",
+    sub: "The witch village down to the Mediterranean",
     body: [
-      "The last riding day was a slow descent south, through the mountain passes along the French-Italian border, the temperature climbing every hour. The air changed. Smelt of salt instead of pine.",
-      "By the afternoon we were rolling along the Ligurian coast — Sanremo, then on towards Monaco. From 2,500m military tracks to superyachts in 48 hours. Only Cat D.",
+      "Triora is a tiny village clinging to a mountainside in the Ligurian hills. Famous for its witch trials in the 1500s — locals were tortured and burned, and the village leans into it now. Narrow stone streets, witch symbols on every door, a museum dedicated to the trials. We stopped, walked the alleys, drank a coffee in the square, and got out before sundown.",
+      "From Triora we dropped towards the coast — the air changed, smelt of salt instead of pine. By the afternoon we were rolling along the Ligurian coast at Sanremo. From 3,000m gravel to the Mediterranean in a day. Only Cat D.",
+    ],
+  },
+  {
+    id: "france-back",
+    label: "Day 8",
+    title: "Back to Sauze via the French Alps",
+    sub: "Epic high tarmac passes home",
+    body: [
+      "The last riding day was a long, glorious tarmac loop. We crossed back over into France and rode some of the most ridiculous high mountain passes in Europe on the way back to Sauze d'Oulx. Pure tarmac, hairpin after hairpin, alpine villages, the bikes finally getting to stretch their legs after a week of gravel.",
+      "By evening we were back at Sauze. Bikes tired. Riders happy. The next morning we drove the long road home — but not before one last night.",
     ],
   },
   {
     id: "vineyard",
     label: "Final night",
-    title: "The vineyard wedding venue",
+    title: "The vineyard at Cascina La Commenda",
     sub: "A dark walk to dinner, dogs barking in the trees",
     body: [
-      "The last night we stayed at an old wedding venue surrounded by vineyards. Beautiful place — ivy-covered farmhouse, sundial on the wall, the kind of spot you'd actually want to get married at. Until it got dark.",
+      "The last night we stayed at Cascina La Commenda in Peveragno — an old wedding venue surrounded by vineyards. Beautiful place — ivy-covered farmhouse, sundial on the wall, the kind of spot you'd actually want to get married at. Until it got dark.",
       "Then the dogs started. We don't know how many. Big ones. We couldn't see them. We could just hear them, somewhere in the vines, every time we moved. The restaurant was a long walk into town. Pitch black. Dogs barking from every direction. Honestly a bit scary.",
       "Liam and Lewis put dinner on the lads as a thank-you for the week. We ate well, drank well, walked back even quicker than we'd walked in. End of tour.",
     ],
     img: "/images/tours/italy-2025/it-12.jpg",
-    imgCaption: "The vineyard wedding venue at night — dogs not pictured",
+    imgCaption: "Cascina La Commenda at night — dogs not pictured",
   },
 ];
 
 const headlineImage = "/images/tours/italy-2025/it-3.jpg";
 const headlineCaption = "The crew at the top — Italian Alps TET, September 2025";
 
-// All images for the bottom gallery
 const gallery = [
-  { src: "/images/tours/italy-2025/it-1.jpg", caption: "Mountain pass viewpoint" },
-  { src: "/images/tours/italy-2025/it-2.jpg", caption: "Van selfie — heading out" },
-  { src: "/images/tours/italy-2025/it-3.jpg", caption: "Group photo at the pass" },
-  { src: "/images/tours/italy-2025/it-4.jpg", caption: "On the road in the Alps" },
+  { src: "/images/tours/italy-2025/it-1.jpg", caption: "Descent off the Sommeiller" },
+  { src: "/images/tours/italy-2025/it-2.jpg", caption: "Van selfie — heading out from Manchester" },
+  { src: "/images/tours/italy-2025/it-3.jpg", caption: "Group photo on the Assietta" },
+  { src: "/images/tours/italy-2025/it-4.jpg", caption: "On the road in the Italian Alps" },
   { src: "/images/tours/italy-2025/it-5.jpg", caption: "Alpine lake stop" },
   { src: "/images/tours/italy-2025/it-6.jpg", caption: "Italian Alps" },
   { src: "/images/tours/italy-2025/it-7.jpg", caption: "Mountain pass riding" },
-  { src: "/images/tours/italy-2025/it-8.jpg", caption: "High pass cafe" },
-  { src: "/images/tours/italy-2025/it-9.jpg", caption: "The Everton bar" },
+  { src: "/images/tours/italy-2025/it-8.jpg", caption: "High pass cafe — pre-pasta" },
+  { src: "/images/tours/italy-2025/it-9.jpg", caption: "The Everton bar in Sauze" },
   { src: "/images/tours/italy-2025/it-10.jpg", caption: "On tour" },
   { src: "/images/tours/italy-2025/it-11.jpg", caption: "Alpine views" },
-  { src: "/images/tours/italy-2025/it-12.jpg", caption: "Vineyard wedding venue at night" },
+  { src: "/images/tours/italy-2025/it-12.jpg", caption: "Cascina La Commenda at night" },
   { src: "/images/tours/italy-2025/it-13.jpg", caption: "Tour life" },
   { src: "/images/tours/italy-2025/it-14.jpg", caption: "Italian Alps" },
   { src: "/images/tours/italy-2025/it-15.jpg", caption: "The ibex statue at the pass" },
   { src: "/images/tours/italy-2025/it-16.jpg", caption: "Final day on tour" },
 ];
+
+// Minimal Leaflet type — we load via CDN at runtime
+type LeafletNS = {
+  map: (el: HTMLElement, opts?: Record<string, unknown>) => LMap;
+  tileLayer: (url: string, opts?: Record<string, unknown>) => { addTo: (m: LMap) => unknown };
+  circleMarker: (latlng: [number, number], opts?: Record<string, unknown>) => LMarker;
+  polyline: (latlngs: [number, number][], opts?: Record<string, unknown>) => { addTo: (m: LMap) => unknown };
+};
+type LMap = {
+  fitBounds: (bounds: [number, number][], opts?: Record<string, unknown>) => unknown;
+  setView: (center: [number, number], zoom: number) => unknown;
+  invalidateSize: () => unknown;
+};
+type LMarker = {
+  addTo: (m: LMap) => LMarker;
+  bindPopup: (html: string) => LMarker;
+};
+declare global {
+  interface Window {
+    L?: LeafletNS;
+  }
+}
+
+function RouteMap() {
+  const mapRef = useRef<HTMLDivElement>(null);
+  const initialised = useRef(false);
+
+  useEffect(() => {
+    if (initialised.current || !mapRef.current) return;
+
+    // Load Leaflet CSS
+    if (!document.getElementById("leaflet-css")) {
+      const css = document.createElement("link");
+      css.id = "leaflet-css";
+      css.rel = "stylesheet";
+      css.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
+      document.head.appendChild(css);
+    }
+
+    const initMap = () => {
+      const L = window.L;
+      if (!L || !mapRef.current || initialised.current) return;
+      initialised.current = true;
+
+      const map = L.map(mapRef.current, {
+        scrollWheelZoom: false,
+        dragging: true,
+      });
+
+      // Default centre — covers the UK to Italy span
+      map.setView([47.5, 4.5], 5);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "© OpenStreetMap contributors",
+        maxZoom: 18,
+      }).addTo(map);
+
+      const colours = { start: "#22c55e", stop: "#e87c3e", peak: "#eab308", end: "#ef4444" };
+
+      const latlngs: [number, number][] = [];
+      routePoints.forEach((p) => {
+        const colour = colours[p.type];
+        const marker = L.circleMarker(p.coords, {
+          radius: 7,
+          fillColor: colour,
+          color: "#000",
+          weight: 2,
+          opacity: 1,
+          fillOpacity: 0.95,
+        }).addTo(map);
+        marker.bindPopup(`<strong style="color:#111">${p.name}</strong>`);
+        latlngs.push(p.coords);
+      });
+
+      // Draw route polyline (Manchester → Dover dashed since it's a van transit)
+      const vanLeg = latlngs.slice(0, 3); // Manchester → Dover → Sauze
+      L.polyline(vanLeg, { color: "#888", weight: 2, dashArray: "6, 8" }).addTo(map);
+
+      const rideLeg = latlngs.slice(2); // Sauze onwards is on the bikes
+      L.polyline(rideLeg, { color: "#e87c3e", weight: 3.5, opacity: 0.9 }).addTo(map);
+
+      // Fit to all points — wait for layout to settle so dimensions are real
+      setTimeout(() => {
+        map.invalidateSize();
+        map.fitBounds(latlngs, { padding: [40, 40] });
+      }, 200);
+    };
+
+    if (window.L) {
+      initMap();
+    } else {
+      const existing = document.getElementById("leaflet-script") as HTMLScriptElement | null;
+      if (existing) {
+        existing.addEventListener("load", initMap);
+      } else {
+        const script = document.createElement("script");
+        script.id = "leaflet-script";
+        script.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+        script.onload = initMap;
+        document.body.appendChild(script);
+      }
+    }
+  }, []);
+
+  return (
+    <>
+      <div ref={mapRef} className="w-full aspect-[16/10] md:aspect-[16/9] rounded-xl overflow-hidden border border-catd-border bg-[#0e0e0e]" style={{ zIndex: 0 }} />
+      <div className="mt-3 flex flex-wrap gap-3 text-[10px] text-catd-subtle">
+        <span className="inline-flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-[#22c55e]" /> Start (Manchester)</span>
+        <span className="inline-flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-[#e87c3e]" /> Stop</span>
+        <span className="inline-flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-[#eab308]" /> High pass / peak</span>
+        <span className="inline-flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-[#ef4444]" /> Final night</span>
+        <span className="inline-flex items-center gap-1.5"><span className="w-3 h-[2px] bg-[#888]" /> Van transit</span>
+        <span className="inline-flex items-center gap-1.5"><span className="w-3 h-[2px] bg-catd-orange" /> Ride leg</span>
+      </div>
+    </>
+  );
+}
 
 export default function Italy2025Page() {
   const [lightbox, setLightbox] = useState<number | null>(null);
@@ -193,10 +397,10 @@ export default function Italy2025Page() {
           <p className="text-[10px] tracking-[0.25em] text-catd-orange uppercase mb-3">September 2025 · 8 days · TET Expert</p>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-3">
             Italian Alps TET<br />
-            <span className="text-catd-orange">Channel Tunnel to Monaco.</span>
+            <span className="text-catd-orange">Manchester to Monaco.</span>
           </h1>
           <p className="text-sm md:text-base text-catd-muted max-w-2xl leading-relaxed">
-            Seven riders, three vans, eight days of pure Alps. Sauze d&apos;Oulx basecamp, WWII tunnels, military tracks at 2,500m, and a descent that ends on the Mediterranean.
+            Seven riders, three vans, eight days of pure Alps. Colle del Sommeiller at 3,000m, the Assietta trails, Fort Exilles, the Via del Sale Salt Road, Triora witches, and a descent to Sanremo before looping back through the French Alps.
           </p>
         </div>
       </section>
@@ -228,20 +432,14 @@ export default function Italy2025Page() {
         </div>
       </section>
 
-      {/* ── Map placeholder ── */}
+      {/* ── Route map ── */}
       <section className="px-5 py-12 md:px-10 md:py-14 max-w-5xl mx-auto border-b border-[#161616]">
         <p className="text-[10px] tracking-[0.25em] text-catd-subtle uppercase mb-3">The route</p>
         <h2 className="text-2xl md:text-3xl font-bold mb-3">Manchester to Monaco, the long way</h2>
         <p className="text-sm text-catd-muted leading-7 mb-6 max-w-2xl">
-          Vans to the Channel Tunnel, then south to Sauze d&apos;Oulx in the Italian Alps. Three days riding out from basecamp, then a slow descent along the French–Italian border to Sanremo and the Ligurian coast.
+          Vans from Manchester to the Channel Tunnel, then south to Sauze d&apos;Oulx in the Italian Alps. Two days of basecamp riding on the Sommeiller and Assietta, then south to Limone Piemonte for the Via del Sale Salt Road, Triora and Sanremo, before looping back through the French Alps. Click any pin for details.
         </p>
-        <div className="aspect-[16/9] bg-[#0e0e0e] border border-catd-border rounded-xl flex items-center justify-center">
-          <div className="text-center px-6">
-            <div className="text-3xl mb-2">🗺️</div>
-            <p className="text-sm text-[#666]">Map coming soon — Neil&apos;s putting it together</p>
-            <p className="text-[10px] text-catd-subtle mt-2 tracking-wider uppercase">Full GPX route to follow</p>
-          </div>
-        </div>
+        <RouteMap />
       </section>
 
       {/* ── Video ── */}
@@ -249,7 +447,7 @@ export default function Italy2025Page() {
         <p className="text-[10px] tracking-[0.25em] text-catd-subtle uppercase mb-3">Watch the tour</p>
         <h2 className="text-2xl md:text-3xl font-bold mb-3">The full video</h2>
         <p className="text-sm text-catd-muted leading-7 mb-6 max-w-2xl">
-          Eight days condensed into one ride. Drone footage from the WWII tunnels, the mountain passes, alpine lakes, and the descent to Monaco. Best watched full-screen with the sound on.
+          Eight days condensed into one ride. Drone footage from the Sommeiller, the Salt Road hairpin, the mountain passes, alpine lakes, and the descent to Monaco. Best watched full-screen with the sound on.
         </p>
         <div className="relative aspect-video rounded-xl overflow-hidden border border-catd-border bg-black shadow-[0_0_60px_-20px_rgba(232,124,62,0.3)]">
           <iframe
@@ -287,10 +485,9 @@ export default function Italy2025Page() {
         <p className="text-[10px] tracking-[0.25em] text-catd-subtle uppercase mb-3">The story</p>
         <h2 className="text-2xl md:text-3xl font-bold mb-2">Eight days, one tour</h2>
         <p className="text-sm text-catd-muted mb-10 max-w-2xl">
-          The full breakdown — day by day, story by story. Click any chapter heading on a desktop to jump to it.
+          The full breakdown — day by day, story by story.
         </p>
 
-        {/* Chapter nav */}
         <div className="hidden md:flex flex-wrap gap-2 mb-10 pb-6 border-b border-[#161616]">
           {chapters.map((c) => (
             <a
@@ -352,6 +549,37 @@ export default function Italy2025Page() {
                 </div>
               )}
             </article>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Hotels ── */}
+      <section className="px-5 py-12 md:px-10 md:py-14 max-w-5xl mx-auto border-b border-[#161616]">
+        <p className="text-[10px] tracking-[0.25em] text-catd-subtle uppercase mb-3">Where we stayed</p>
+        <h2 className="text-2xl md:text-3xl font-bold mb-3">Four hotels, one tour</h2>
+        <p className="text-sm text-catd-muted leading-7 mb-8 max-w-2xl">
+          The digs across the eight days — basecamp accommodation in Sauze d&apos;Oulx for the first half, the spa stop in Limone Piemonte, and a vineyard finish at Cascina La Commenda.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {hotels.map((h) => (
+            <div key={h.name} className="p-5 bg-catd-card rounded-lg border border-catd-border">
+              <div className="flex items-start justify-between gap-3 mb-2">
+                <div>
+                  <h3 className="text-base font-bold text-catd-text">{h.name}</h3>
+                  <p className="text-[11px] text-catd-subtle mt-0.5">{h.location}</p>
+                </div>
+                <div className="shrink-0 px-2 py-1 bg-catd-orange/15 rounded text-[11px] font-bold text-catd-orange">
+                  {h.rating}
+                </div>
+              </div>
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-[11px] text-[#eab308]">{"★".repeat(h.stars)}</span>
+                <span className="text-[10px] text-catd-subtle">·</span>
+                <span className="text-[10px] text-catd-orange tracking-wider uppercase">{h.nights}</span>
+              </div>
+              <p className="text-[11px] text-[#555] italic mb-3">{h.address}</p>
+              <p className="text-xs text-[#888] leading-6">{h.note}</p>
+            </div>
           ))}
         </div>
       </section>
