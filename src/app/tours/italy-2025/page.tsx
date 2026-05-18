@@ -610,6 +610,29 @@ export default function Italy2025Page() {
         </div>
       </section>
 
+      {/* ── Thanks to Neil ── */}
+      <section className="px-5 py-12 md:px-10 md:py-14 max-w-4xl mx-auto border-b border-[#161616]">
+        <div className="bg-catd-card border border-catd-orange/30 rounded-xl p-7 md:p-10 relative overflow-hidden">
+          <div className="absolute -top-10 -right-10 w-40 h-40 bg-catd-orange/10 rounded-full blur-3xl" />
+          <p className="text-[10px] tracking-[0.25em] text-catd-orange uppercase mb-3 relative">A tip of the helmet</p>
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 relative">Thank you, Neil</h2>
+          <p className="text-sm text-catd-muted leading-8 mb-4 relative">
+            None of this trip happens without Neil. Every pass, every trail, every digs, every petrol stop — he plotted it, scouted it, and stitched it all together into eight days that flowed from one Alps moment to the next. The Sommeiller at 3,000m, the Assietta ridgelines, the Salt Road hairpin, the witch village, the tarmac loop home — it&apos;s all his graft.
+          </p>
+          <p className="text-sm text-catd-muted leading-8 mb-4 relative">
+            What Neil doesn&apos;t shout about is how much he gives to the wider riding community. He shares his routes, his GPX files, his hotel finds and his hard-won knowledge of the Italian and French Alps with anyone who&apos;ll listen. Other groups have ridden tours off the back of routes Neil mapped years ago. He just wants more riders out there enjoying it.
+          </p>
+          <p className="text-sm text-catd-muted leading-8 relative">
+            From every rider on this trip — and every rider who&apos;s ever followed one of his lines — cheers Squadron Leader. We&apos;d be lost without you. Literally.
+          </p>
+          <div className="mt-6 relative">
+            <Link href="/riders#neil" className="inline-flex items-center gap-2 text-sm text-catd-orange font-semibold hover:underline">
+              Read Neil&apos;s rider profile →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA ── */}
       <section className="px-5 py-12 md:px-10 md:py-14 max-w-4xl mx-auto text-center">
         <h2 className="text-xl md:text-2xl font-bold mb-3">Want to ride one with us?</h2>
