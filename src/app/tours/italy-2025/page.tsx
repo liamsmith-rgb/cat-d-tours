@@ -4,13 +4,13 @@ import Link from "next/link";
 import { useState, useEffect, useCallback } from "react";
 
 const riders = [
-  { name: "Neil", bike: "KTM 890" },
+  { name: "Neil", bike: "KTM 890", href: "/riders#neil" },
   { name: "Eric", bike: "Africa Twin" },
-  { name: "Lewis", bike: "KTM 790" },
-  { name: "Liam", bike: "KTM 890" },
-  { name: "Ricky", bike: "Honda CRF300L" },
-  { name: "Bill", bike: "Honda CRF300L" },
-  { name: "Dave", bike: "Honda CRF300L" },
+  { name: "Lewis", bike: "KTM 790", href: "/riders#lewis" },
+  { name: "Liam", bike: "KTM 890", href: "/riders#liam" },
+  { name: "Ricky", bike: "Honda CRF300L", href: "/riders#ricky" },
+  { name: "Bill", bike: "Honda CRF300L", href: "/riders#bill" },
+  { name: "Dave", bike: "Honda CRF300L", href: "/riders#dave" },
 ];
 
 const chapters = [
@@ -206,16 +206,26 @@ export default function Italy2025Page() {
         <p className="text-[10px] tracking-[0.25em] text-catd-subtle uppercase mb-3">The crew</p>
         <h2 className="text-2xl md:text-3xl font-bold mb-6">Seven riders</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-          {riders.map((r) => (
-            <div key={r.name} className="p-4 bg-catd-card rounded-lg border border-catd-border">
-              <div className="text-sm font-semibold text-[#c8b99a]">{r.name}</div>
-              <div className="text-[11px] text-catd-subtle mt-1">{r.bike}</div>
-            </div>
-          ))}
+          {riders.map((r) =>
+            r.href ? (
+              <Link
+                key={r.name}
+                href={r.href}
+                className="p-4 bg-catd-card rounded-lg border border-catd-border hover:border-catd-orange transition-colors group"
+              >
+                <div className="text-sm font-semibold text-[#c8b99a] group-hover:text-catd-orange transition-colors">
+                  {r.name} <span className="text-catd-orange/70 group-hover:text-catd-orange">→</span>
+                </div>
+                <div className="text-[11px] text-catd-subtle mt-1">{r.bike}</div>
+              </Link>
+            ) : (
+              <div key={r.name} className="p-4 bg-catd-card rounded-lg border border-catd-border">
+                <div className="text-sm font-semibold text-[#c8b99a]">{r.name}</div>
+                <div className="text-[11px] text-catd-subtle mt-1">{r.bike}</div>
+              </div>
+            )
+          )}
         </div>
-        <p className="text-xs text-catd-subtle mt-6 italic">
-          Eric had to peel off slightly early to get back to family. Everyone else did the full eight days, plus the drive.
-        </p>
       </section>
 
       {/* ── Map placeholder ── */}
@@ -232,6 +242,36 @@ export default function Italy2025Page() {
             <p className="text-[10px] text-catd-subtle mt-2 tracking-wider uppercase">Full GPX route to follow</p>
           </div>
         </div>
+      </section>
+
+      {/* ── Video ── */}
+      <section className="px-5 py-12 md:px-10 md:py-14 max-w-5xl mx-auto border-b border-[#161616]">
+        <p className="text-[10px] tracking-[0.25em] text-catd-subtle uppercase mb-3">Watch the tour</p>
+        <h2 className="text-2xl md:text-3xl font-bold mb-3">The full video</h2>
+        <p className="text-sm text-catd-muted leading-7 mb-6 max-w-2xl">
+          Eight days condensed into one ride. Drone footage from the WWII tunnels, the mountain passes, alpine lakes, and the descent to Monaco. Best watched full-screen with the sound on.
+        </p>
+        <div className="relative aspect-video rounded-xl overflow-hidden border border-catd-border bg-black shadow-[0_0_60px_-20px_rgba(232,124,62,0.3)]">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/w71Sm-r06mg?rel=0"
+            title="Cat D Tours — Italian Alps TET 2025"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            className="absolute inset-0 w-full h-full"
+            loading="lazy"
+          />
+        </div>
+        <p className="text-[10px] text-[#444] mt-3 italic">
+          Filmed across the eight-day Cat D Italy tour, September 2025.{" "}
+          <a
+            href="https://youtu.be/w71Sm-r06mg"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-catd-orange hover:underline"
+          >
+            Watch on YouTube →
+          </a>
+        </p>
       </section>
 
       {/* ── Chapters ── */}

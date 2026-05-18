@@ -138,7 +138,7 @@ export default function RidersPage() {
 
       <div className="space-y-6">
         {riders.map((r, i) => (
-          <article key={i} className="bg-catd-card rounded-xl overflow-hidden border border-catd-border">
+          <article key={i} id={r.name.toLowerCase()} className="bg-catd-card rounded-xl overflow-hidden border border-catd-border scroll-mt-24">
             {/* Image + header on mobile: stacked. On desktop: side by side */}
             <div className="grid grid-cols-1 md:grid-cols-[260px_1fr]">
               <div className="relative h-72 md:h-auto md:min-h-[400px]">
