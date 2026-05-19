@@ -152,6 +152,37 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Opening hours ── */}
+      <section className="px-5 py-12 md:px-10 md:py-14 max-w-4xl mx-auto border-t border-catd-border">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.4fr] gap-6 md:gap-10 items-center">
+          <div>
+            <p className="text-[10px] tracking-[0.25em] text-catd-subtle uppercase mb-3">Get in touch</p>
+            <h2 className="text-2xl md:text-3xl font-bold mb-3">Opening hours</h2>
+            <p className="text-sm text-catd-muted leading-7 max-w-md">
+              Need to chat about a tour, a route, or just want to talk bikes? We&apos;re around through the week. Weekends — we&apos;re out riding.
+            </p>
+          </div>
+          <div className="bg-catd-card border border-catd-border rounded-xl p-5 md:p-6">
+            <div className="space-y-0">
+              {[
+                { day: "Monday", hours: "9:00 – 17:00", open: true },
+                { day: "Tuesday", hours: "9:00 – 17:00", open: true },
+                { day: "Wednesday", hours: "9:00 – 17:00", open: true },
+                { day: "Thursday", hours: "9:00 – 17:00", open: true },
+                { day: "Friday", hours: "9:00 – 17:00", open: true },
+                { day: "Saturday", hours: "Closed", open: false },
+                { day: "Sunday", hours: "Closed", open: false },
+              ].map((d, i, arr) => (
+                <div key={d.day} className={`flex items-center justify-between py-2.5 ${i < arr.length - 1 ? "border-b border-[#161616]" : ""}`}>
+                  <span className={`text-sm font-semibold ${d.open ? "text-catd-text" : "text-[#666]"}`}>{d.day}</span>
+                  <span className={`text-sm ${d.open ? "text-catd-orange font-mono" : "text-[11px] tracking-wider uppercase text-[#555]"}`}>{d.hours}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA ── */}
       <section className="px-5 py-12 md:px-10 md:py-16 border-t border-catd-border text-center max-w-4xl mx-auto">
         <h2 className="text-xl md:text-2xl font-bold mb-3">See where we&apos;ve been</h2>
