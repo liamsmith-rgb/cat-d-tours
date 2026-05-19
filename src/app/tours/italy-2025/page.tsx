@@ -5,7 +5,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 
 const riders = [
   { name: "Neil", bike: "KTM 890", href: "/riders#neil" },
-  { name: "Eric", bike: "Africa Twin" },
+  { name: "Eric", bike: "Africa Twin", href: "/riders#eric" },
   { name: "Lewis", bike: "KTM 790", href: "/riders#lewis" },
   { name: "Liam", bike: "KTM 890", href: "/riders#liam" },
   { name: "Ricky", bike: "Honda CRF300L", href: "/riders#ricky" },

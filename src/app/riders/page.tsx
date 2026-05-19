@@ -125,6 +125,19 @@ const riders = [
     story: "On a Cat D tour to the Isle of Man, Neil had transported Matt's bike over for him. One problem — Neil forgot the key. No spare. No backup plan. What followed was pure Cat D engineering: a hammer, a screwdriver, and a lot of optimism. They basically had to vandal the bike to get it started, then drilled out the petrol cap just so they could refuel it. The bike ran. Matt rode. The Isle of Man was conquered. Just don't ask about the ignition barrel.",
     footer: "Organised, reliable, and the best-moisturised man in adventure biking. Matt brings order to the chaos of Cat D Tours — and a toiletry bag bigger than most riders' panniers.",
   },
+  {
+    name: "Eric",
+    nick: "Ey Up Cock",
+    from: "Wigan, England",
+    img: "/images/riders/eric.jpg",
+    imgPos: "object-top",
+    bikes: ["Yamaha Ténéré 700", "KTM 890", "BMW GS 1250", "KTM 1290", "KTM 500", "KTM 350"],
+    bio: "Eric changes bikes left, right and centre — if something tickles his fancy, he buys it. Over the years his garage has seen Ténérés, GS 1250s, KTM 890s, 1290s, 500s and 350s. He's a mechanic by trade and a properly high-end, technically skilled rider — heavy in the enduro scene and a regular on the awkward Welsh trails. About three or four years deep into Cat D and he's been on the lot: the Isle of Man, Malaga, the Italy/Monaco road tour, and a huge part of the Italy 2025 trip.",
+    bio2: "Wigan through and through. Walks into any room with \"Ey up cock, you alright cock?\" and the whole place lifts. He's also the most indecisive man in adventure motorcycling — at 10am it's \"are we having a coffee and a cakeee?\", an hour later it's \"right lads, let's get a bit more riding in\", and by mid-afternoon it's \"are we going for a Guinness or a lager?\" — until you're all geared up to head back to the digs and he decides he wants to ride until half six. Hand him your phone for a quick photo and you'll get it back with 400 selfies of Eric.",
+    storyTitle: "The Isle of Man hill climb",
+    story: "There was a steep rocky section on the Isle of Man tour that the lads managed to ride down — only to realise they had to get back up it. Eric's KTM 500 was the test. We pushed, we heaved, we slid back down. If anyone in the group had a pacemaker they'd have been told to step aside. Meanwhile Eric was at the bottom laughing his head off — \"Just give us a minute lads, this is a bit steep.\" Honourable mention: the side-of-the-mountain rescue where Liam's KTM starter switch failed, and Eric somehow nailed it back in place with a tiny magnet and his big chunky fingers. The lads still won't admit he fixed it.",
+    footer: "Top mechanic, top rider, top laugh. Eric's the one motivating the group to give the dodgy trail a go — and the one who'll fix your bike on the mountain afterwards. Wigan's finest.",
+  },
 ];
 
 export default function RidersPage() {
