@@ -14,6 +14,8 @@ const riders = [
     story: "The group arrived late at the hotel after a long day. Neil said he was heading to the restaurant. Everyone showered and came out to find him in the car park with his one-burner stove and a pack of sausages — making hot dogs for everyone. Eric from Wigan walked out: \"Eh up cock, where's the restaurant?\" There was Neil, cutting the ends off the sausages as he does, serving weiners with red sauce. The crew had to leg it back before they missed check-in. Classic Squadron Leader.",
     footer: "Closed passes, punctures, running out of fuel — Cat D has had it all. But Neil always gets the group to the destination. The Squadron Leader never fails.",
     youtube: "https://youtube.com/@neilcollinson6540?si=j_JlOO3zq5y2sjmZ",
+    memoryTitle: "The Italian bike heist",
+    memory: "Two bikes went missing on an Italian tour. AirTag pinged. Bikes located. The plan: hit the dealer first thing in the morning and recover them. One small problem — Neil and Eric had been up since 4am the night before and were rough as toast. The running joke is they'd have handed the keys to the thieves themselves if asked, they didn't know what day it was. The lads dragged them out of bed, propped them up, and the Cat D crew got the bikes back. Legendary recovery.",
   },
   {
     name: "Liam",
@@ -137,6 +139,8 @@ const riders = [
     storyTitle: "The Isle of Man hill climb",
     story: "There was a steep rocky section on the Isle of Man tour that the lads managed to ride down — only to realise they had to get back up it. Eric's KTM 500 was the test. We pushed, we heaved, we slid back down. If anyone in the group had a pacemaker they'd have been told to step aside. Meanwhile Eric was at the bottom laughing his head off — \"Just give us a minute lads, this is a bit steep.\" Honourable mention: the side-of-the-mountain rescue where Liam's KTM starter switch failed, and Eric somehow nailed it back in place with a tiny magnet and his big chunky fingers. The lads still won't admit he fixed it.",
     footer: "Top mechanic, top rider, top laugh. Eric's the one motivating the group to give the dodgy trail a go — and the one who'll fix your bike on the mountain afterwards. Wigan's finest.",
+    memoryTitle: "The Italian bike heist",
+    memory: "Two bikes went missing on an Italian tour. AirTag pinged. Bikes located. The plan: hit the spot first thing in the morning and recover them. One small problem — Eric and Neil had been on it the night before and were up since 4am, rough as toast. The running joke is they'd have handed the keys to the thieves themselves if asked, they didn't know what day it was. The lads dragged them out of bed, propped them up, and the Cat D crew got the bikes back. Eric was a state — but he was there. Legendary recovery.",
   },
 ];
 
@@ -191,6 +195,14 @@ export default function RidersPage() {
                   <p className="text-[10px] text-catd-orange tracking-wider uppercase mb-2">{r.storyTitle}</p>
                   <p className="text-xs text-[#666] leading-6 italic">{r.story}</p>
                 </div>
+
+                {/* Notable memory (optional) */}
+                {r.memoryTitle && r.memory && (
+                  <div className="border-l-[3px] border-[#c8b99a] pl-4 mb-5">
+                    <p className="text-[10px] text-[#c8b99a] tracking-wider uppercase mb-2">Notable memory · {r.memoryTitle}</p>
+                    <p className="text-xs text-[#666] leading-6 italic">{r.memory}</p>
+                  </div>
+                )}
 
                 {/* Footer */}
                 <div className="bg-[#0a0a0a] rounded-md border border-[#141414] px-4 py-3">
