@@ -142,6 +142,19 @@ const riders = [
     memoryTitle: "The Italian bike heist",
     memory: "Two bikes went missing on an Italian tour. AirTag pinged. Bikes located. The plan: hit the spot first thing in the morning and recover them. One small problem — Eric and Neil had been on it the night before and were up since 4am, rough as toast. The running joke is they'd have handed the keys to the thieves themselves if asked, they didn't know what day it was. The lads dragged them out of bed, propped them up, and the Cat D crew got the bikes back. Eric was a state — but he was there. Legendary recovery.",
   },
+  {
+    name: "Mike",
+    nick: "The Interceptor",
+    from: "England",
+    img: "/images/riders/mike-placeholder.png",
+    imgPos: "!object-contain bg-[#0a0a0a] p-8",
+    bikes: ["BMW R 1300 GS", "KTM 790"],
+    bio: "Mike's a top guy and a proper pleasure to be around — always there with a laugh and a steady bit of support when the group needs it. Ex-forces, ex-police, now retired and doing very little (his words, not ours). Spent a chunk of his career as a police interceptor, which he's never going to let anyone forget. These days the only thing he's intercepting is the bar tab. The riding skills could be sharper, but that's only because he was clearly let down by a poor police-driving instructor — definitely not user error. Allegedly.",
+    bio2: "Mike's our road-tour man. He's done the Spain road trips several times with Neil and absolutely loves the long-distance tarmac days. Talks a big game about the off-road, but when it comes to actually getting the wheels on the dirt he, let's just say, takes his time. The lads reckon it's not the trails — it's the mud. He's a bit like Matt in that department: scared to get the boots dirty and never far from a bottle of moisturiser. Most at home surrounded by women, his hair, his teeth, his tan, and the toiletry bag. ABR Festival veteran — been to every single one since it started, completely obsessed with it.",
+    storyTitle: "Talks the talk",
+    story: "Pre-tour, Mike's the loudest in the WhatsApp group. \"Yeah lads, this year I'm doing the full off-road, I'm getting stuck in, knobblies on the GS, the works.\" Day one of the tour, the trail looks a bit slippy — \"actually lads, I'll meet you at the next petrol station, I'll just take the road, save the bike for tomorrow.\" Tomorrow never comes. We love him for it. He always shows up at the digs with the cold beers in before any of the off-roaders make it back.",
+    footer: "Hair, teeth, tan, GS, road-tour legend. Mike just needs persuading to come on a few more proper Cat D trips. We'll get him on the dirt one of these days. Maybe.",
+  },
 ];
 
 export default function RidersPage() {
