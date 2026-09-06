@@ -155,6 +155,21 @@ const riders = [
     story: "Pre-tour, Mike's the loudest in the WhatsApp group. \"Yeah lads, this year I'm doing the full off-road, I'm getting stuck in, knobblies on the GS, the works.\" Day one of the tour, the trail looks a bit slippy — \"actually lads, I'll meet you at the next petrol station, I'll just take the road, save the bike for tomorrow.\" Tomorrow never comes. We love him for it. He always shows up at the digs with the cold beers in before any of the off-roaders make it back.",
     footer: "Hair, teeth, tan, GS, road-tour legend. Mike just needs persuading to come on a few more proper Cat D trips. We'll get him on the dirt one of these days. Maybe.",
   },
+  {
+    name: "Ross",
+    nick: "The Marine",
+    from: "England",
+    img: "/images/riders/ross.jpg",
+    imgPos: "object-top",
+    bikes: ["Voge 800", "Honda 450"],
+    bio: "The newest member of the Cat D crew, and he came in through Mark — which tells you everything about the calibre. Ross is ex-Royal Marines, runs a successful business, and is a proper team player: if anybody needs a hand, he's already there. He's brought the full Marine mentality to the group. On the recent Devon trip he must have come off at least four times — heavy falls, not little tip-overs — and every single time he just rolled through it, got up, and carried on like nothing had happened. There's a video of his knee going pop and the man barely flinched.",
+    bio2: "A genuinely interesting bloke and a proper rider. He's ridden all over the world, he's done the rallies in Morocco, and he's been across the globe on two wheels with his dad. He's not afraid of riding solo — he's maxed out the whole of the Welsh TET on his own — but he loves being in a group just as much. Every characteristic you'd want in a Cat D rider, he's got. Devon's done, the new Wales tour is next, and we're confident he'll be on plenty more after that.",
+    storyTitle: "Devil's Steps",
+    story: "Devon trip. Devil's Steps — a proper steep, rocky climb that eats heavy bikes. Ross is sat at the bottom on the Voge 800 sizing it up. Liam's at the top shouting the only advice that matters: \"Mate, your bike's heavy as anything. Full revs, let the clutch out cock, and just go.\" So Ross did exactly that. Absolutely full commitment, no hesitation, and he very nearly made it — right up until his knee popped near the top. Nasty injury, but he's fine, and the video says everything about the man. Full send, every time.",
+    footer: "Ex-Marine, world rider, Morocco rally veteran, and the only man who can pop a knee and call it \"a bit sore.\" Ross is exactly what Cat D Tours is about.",
+    memoryTitle: "The mountain whisky",
+    memory: "Last tour, Ross announced he'd brought some whisky in his CamelBak so the lads could all have a shot at the top of the mountain. Proper Marine move. Everyone's excited — right up until it comes out pink. Tequila Rose. The lads were straight in: \"This isn't the top stuff, this is for girls.\" Ross didn't care. He made every single one of them have a shot. Even Neil. Squadron Leader necked a Tequila Rose on a mountainside because a Royal Marine told him to. Legendary.",
+  },
 ];
 
 export default function RidersPage() {
