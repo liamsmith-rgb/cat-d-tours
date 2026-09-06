@@ -170,6 +170,20 @@ const riders = [
     memoryTitle: "The mountain whisky",
     memory: "Last tour, Ross announced he'd brought some whisky in his CamelBak so the lads could all have a shot at the top of the mountain. Proper Marine move. Everyone's excited — right up until it comes out pink. Tequila Rose. The lads were straight in: \"This isn't the top stuff, this is for girls.\" Ross didn't care. He made every single one of them have a shot. Even Neil. Squadron Leader necked a Tequila Rose on a mountainside because a Royal Marine told him to. Legendary.",
   },
+  {
+    name: "Matt",
+    slug: "matt-edgeways",
+    nick: "Edgeways",
+    from: "Manchester, England",
+    img: "/images/riders/matt-890.jpg",
+    imgPos: "object-[50%_40%]",
+    bikes: ["KTM 890", "Enduro bike"],
+    bio: "Our second Matt — and the quiet one. He works in a bank, rides a KTM 890 properly well, and keeps an enduro bike in the garage for the rough stuff. Takes a while to get to know him, because Matt barely says a word. The whole crew rides with the intercoms on, everyone chatting away, and Matt's in the channel the entire time saying absolutely nothing. So the lads have a running bit: \"Matt. Matt. Come on Matt, let us get a word in edgeways, mate — you never shut up.\" Delivered with maximum sarcasm to a man who hasn't spoken in forty minutes.",
+    bio2: "Don't let the silence fool you — he's a top rider and a proper team player. Up for anything, keeps the lads focused, and he's slotted straight into the Cat D crew like every other member. On the Devon trip he cleared Devil's Steps all the way up to the very last bit — the whole crew were gutted for him when he didn't quite get the final section, because he was that close. But he was full of it afterwards, and it's only a matter of time before he tops it out.",
+    storyTitle: "The wallet run",
+    story: "Devon trip. The crew have packed up and moved on from the hotel, and Matt suddenly realises his wallet's not with him. It's still in the hotel room. So while everyone else rides on, Matt turns the 890 round and does a two-hour ride back to fetch it — then rides all the way back again and tracks the lads down at the mines out at Land's End. Never complained, never made a fuss, just turned up and got on with it. Say what you like about the memory, the man's got some staying power.",
+    footer: "Says nothing, rides everything. Matt's the strong, silent one of Cat D Tours — the lads will keep taking the mick about getting a word in edgeways, and he'll keep letting the riding do the talking.",
+  },
 ];
 
 export default function RidersPage() {
@@ -183,7 +197,7 @@ export default function RidersPage() {
 
       <div className="space-y-6">
         {riders.map((r, i) => (
-          <article key={i} id={r.name.toLowerCase()} className="bg-catd-card rounded-xl overflow-hidden border border-catd-border scroll-mt-24">
+          <article key={i} id={r.slug ?? r.name.toLowerCase()} className="bg-catd-card rounded-xl overflow-hidden border border-catd-border scroll-mt-24">
             {/* Image + header on mobile: stacked. On desktop: side by side */}
             <div className="grid grid-cols-1 md:grid-cols-[260px_1fr]">
               <div className="relative h-72 md:h-auto md:min-h-[400px]">
